@@ -144,11 +144,62 @@ top 실행 옵션으로는
 
 ---
 ### 1-3. 리눅스 명령어 jobs
-test3
+작업의 상태를 표시하는 명령어입니다. 현재 쉘 세션에서 실행시킨 백그라운드 작업의 목록이 출력되며, 각 작업에는 번호가 붙어 있어 kill 명령어 뒤에 '%번호' 등으로 사용할 수 있습니다.
+
+`jobs [옵션][작업번호]`
+
+jobs 명령어는 현재 쉘 프로세스의 자식 백그라운드 프로세스들을 보여준다고 생각하면 됩니다.
+
+![jobs](https://t1.daumcdn.net/cfile/tistory/99B5DF505E60F42C10)
+
+**1) 백그라운드 작업의 상태값**
+|상태|설명|
+|:---:|:---:|
+|Running|작업이 계속 진행중임|
+|Done|작업이 완료되어 0을 반환|
+|Done(code)|작업이 종료되었으며 0이 아닌 코드를 반환|
+|Stopped|작업이 일시 중단|
+|Stopped(SIGTSTP)|SIGTSTP 시그널이 작업을 일시 중단|
+|Stopped(SIGSTOP)|SIGSTOP 시그널이 작업을 일시 중단|
+|Stopped(SIGTTIN)|SIGTTIN 시그널이 작업을 일시 중단|
+|Stopped(SIGTTOU)|SIGTTOU 시그널이 작업을 일시 중단|
+
+**2) jobs의 옵션**
+|옵션|설명|
+|:---:|:---:|
+|-l|프로세스 그룹 ID를 state 필드 앞에 출력|
+|-n|프로세스 그룹 중에 대표 프로세스 ID를 출력|
+|-p|각 프로세스 ID에 대해 한 행씩 출력|
+|command|지정한 명령어를 실행|
+
+![jobs2](https://t1.daumcdn.net/cfile/tistory/99E14B465E60F42D2A)
+![jobs3](https://t1.daumcdn.net/cfile/tistory/99B932395E60F42E2C)
+
 
 ---
 ### 1-4. 리눅스 명령어 kill
-test4
+리눅스에서 작업을 할 때 응용프로그램이나 프로세스가 멈추는 것을 볼 수 있습니다. 이 때의 유일한 해결책은 그 프로세스를 종료하는 것입니다.\
+kill 명령어는 대개 프로세스를 죽일 때 사용합니다. 하지만 내부적으로는 프로세스에 시그널을 보내 원하는 작업을 하게 하는 명령어입니다. 이 툴을 사용하려면 다음 구문을 사용합니다.
+
+`kill [options] <pid> [...]`
+
+**1) 사용방법**\
+죽이려는 프로세스의 pid를 얻은 다음 kill 명령어의 인자로 넘기면 됩니다. 예를들어 node.js로 실행 중인 서버를 죽이고 싶다면 ps 명령어를 통해 node.js의 pid를 얻고 kill 명령어의 파라미터로 넘겨 실행시키면 종료시킬 수 있습니다.
+
+`kill [pid]`
+
+![kill](https://t1.daumcdn.net/cfile/tistory/993696485C6377E90C)
+
+
+**2)옵션**
+|옵션|설명|
+|:---:|:---:|
+|-l|signal 의 종류를 출력한다.|
+
+-l (List의 엘) 명령어를 통해 지원하는 시그널의 목록을 확인할 수 있습니다.
+`kill -l`
+
+![kill2](https://t1.daumcdn.net/cfile/tistory/99E84B455C6378A109)
 
 ---
 
